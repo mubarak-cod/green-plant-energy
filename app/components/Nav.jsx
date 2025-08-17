@@ -34,44 +34,46 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link href="/" className="text-2xl font-bold text-white">
-                        
-                        {/* <Image
+
+                        <Image
                             src="https://res.cloudinary.com/dpsxbuxkr/image/upload/v1755419466/greenlogoo_ygvz7n.png"
+                            // src="/greenlogo.png"
                             alt="Logo"
                             width={120}
                             height={120}           
                             style={{ objectFit: "contain" }}
                             priority
-                        /> */}
+                        />
 
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="hidden md:flex space-x-8">
-                        <Link href="#home" className="text-white text-xs sm:text-sm md:text-base hover:text-green-400 transition">
+                    <div className="hidden md:flex space-x-6">
+                        <Link href="#home" className="text-white text-xs font-sans hover:text-green-400 transition">
                             Home
                         </Link>
-                        <Link href="#about" className="text-white text-xs sm:text-sm md:text-base hover:text-green-400 transition">
+                        <Link href="#about" className="text-white text-xs font-sans hover:text-green-400 transition">
                             About
                         </Link>
-                        <Link href="#services" className="text-white text-xs sm:text-sm md:text-base hover:text-green-400 transition">
+                        <Link href="#services" className="text-white text-xs font-sans hover:text-green-400 transition">
                             Services
                         </Link>
-                        <Link href="#projects" className="text-white text-xs sm:text-sm md:text-base hover:text-green-400 transition">
+                        <Link href="#projects" className="text-white text-xs font-sans hover:text-green-400 transition">
                             Projects
                         </Link>
-                        <Link href="#contact" className="text-white text-xs sm:text-sm md:text-base hover:text-green-400 transition">
+                        <Link href="#contact" className="text-white text-xs font-sans hover:text-green-400 transition">
                             Contact
                         </Link>
                     </div>
+
 
                     {/* Book a Call Button */}
                     <div className="hidden md:block">
                         <Link
                             href="#book"
-                            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-black rounded-lg font-semibold transition"
+                            className="px-4 py-2 text-sm bg-green-500 hover:bg-green-600 text-white rounded transition"
                         >
-                            Book a Call
+                            send us a request
                         </Link>
                     </div>
 
