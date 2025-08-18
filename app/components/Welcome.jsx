@@ -2,7 +2,8 @@
 
 import React from "react";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-
+import { Suspense } from "react";
+import Loader from "./Loader";
 
 
 const Welcome = () => {
@@ -36,6 +37,7 @@ const Welcome = () => {
                 </div>
 
                 {/* Right Side - Lottie Animations */}
+                 <Suspense fallback={<Loader />}>
                 <div className="flex gap-4">
                     <div className="w-1/2 h-82">
 
@@ -55,6 +57,7 @@ const Welcome = () => {
                         />
                     </div>
                 </div>
+                </Suspense>
             </div>
         </section>
     );

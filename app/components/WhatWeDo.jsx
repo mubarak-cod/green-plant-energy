@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { Suspense } from "react";
 import Tilt from "react-parallax-tilt"; // ✅ use React Tilt
 import { Lens } from "./ui/lens";
+import Loader from "./Loader";
 
 const WhatWeDo = () => {
   const [hovering, setHovering] = useState(false);
@@ -40,6 +42,7 @@ const WhatWeDo = () => {
           >
             <div className="relative z-10">
               <Lens hovering={hovering} setHovering={setHovering}>
+                 <Suspense fallback={<Loader />}>
                 <img
                   src={item.src}
                   alt={item.title}
@@ -47,6 +50,7 @@ const WhatWeDo = () => {
                   height={500}
                   className="rounded-2xl"
                 />
+                </Suspense>
               </Lens>
               <div className="py-4 relative z-20">
                 <h2 className="text-white text-xl font-bold">{item.title}</h2>
