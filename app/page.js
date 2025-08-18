@@ -14,9 +14,9 @@ export default function Home() {
   return (
       <div className="relative w-full overflow-x-hidden">
         <Nav />
-        <Suspense fallback={<Loader />}>
+        {/* <Suspense fallback={<Loader />}> */}
        <Hero />
-       </Suspense>
+       {/* </Suspense> */}
         <Welcome />
         <WhatWeDo />
         <WorldMapDemo />
