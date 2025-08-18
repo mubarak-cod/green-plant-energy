@@ -15,17 +15,17 @@ const poppins = Poppins({
 
 const videos = [
     {
-        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755418246/Part_Of_Gas_Refining_Plant_4K_Stock_Video_-_Download_Video_Clip_Now_-_Gasoline_Pipe_-_Tube_Natural_Gas_-_iStock_lxsdyj.mp4",
+        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755536457/Part_Of_Gas_Refining_Plant_4K_Stock_Video_-_Download_Video_Clip_Now_-_Gasoline_Pipe_-_Tube_Natural_Gas_-_iStock_vnlgfb.mp4",
         title: "Empowering Oil & Gas with Innovation",
         desc: "We deliver cutting-edge digital solutions that optimize operations, enhance efficiency, and drive sustainability across the oil and gas industry. Our expertise ensures smarter processes, safer workflows, and measurable impact for global energy providers.",
     },
     {
-        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755418937/Two_workers_at_the_factory_-_Free_Stock_Video_Footage_aorngz.mp4",
+        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755536636/Two_workers_at_the_factory_-_Free_Stock_Video_Footage_og1tqe.mp4",
         title: "Sustainable Energy for the Future",
         desc: "Our mission focuses on renewable strategies and sustainable energy solutions that empower businesses to reduce carbon footprints, increase resilience, and lead the transition towards cleaner, greener, and more responsible power generation practices worldwide.",
     },
     {
-        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755419006/Worker_with_hardhat_at_the_factory_-_Free_Stock_Video_Footage_ha3b4e.mp4",
+        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755536760/Worker_with_hardhat_at_the_factory_-_Free_Stock_Video_Footage_2_j99d35.mp4",
         title: "Engineering Excellence at Every Step",
         desc: "Providing world-class engineering services across the energy value chain, we combine innovation, precision, and expertise to deliver projects that exceed expectations, ensuring operational excellence, cost efficiency, and long-term reliability for our clients globally.",
     },
@@ -46,7 +46,7 @@ export default function Hero() {
             className={`relative w-full h-screen overflow-hidden ${poppins.className}`}
         >
             {/* Background Video */}
-             {/* <Suspense fallback={<Loader />}> */}
+            {/* <Suspense fallback={<Loader />}> */}
             <AnimatePresence>
                 {videos.map(
                     (video, index) =>
@@ -117,15 +117,24 @@ export default function Hero() {
 
             {/* WhatsApp Button */}
             <div className="fixed bottom-4 right-4 z-50">
-      <a
-        href="https://wa.me/2347039978994"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-[#25D366] hover:bg-[#20b358] transition-all p-3 rounded-full shadow-lg flex items-center justify-center"
-      >
-        <FaWhatsapp className="w-8 h-8 text-white" />
-      </a>
-    </div>
+                <motion.a
+                    href="https://wa.me/2347039978994"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] hover:bg-[#20b358] transition-all p-3 rounded-full shadow-lg flex items-center justify-center"
+                    animate={{
+                        scale: [1, 1.15, 1], // slight pop
+                        rotate: [0, -8, 8, 0] // subtle wiggle
+                    }}
+                    transition={{
+                        duration: 1.8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                >
+                    <FaWhatsapp className="w-8 h-8 text-white" />
+                </motion.a>
+            </div>
         </div>
     );
 }
