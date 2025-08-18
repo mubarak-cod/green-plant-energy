@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { FaWhatsapp } from "react-icons/fa";
+import { Poppins } from "next/font/google";
+
+// Load Poppins font
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
+
 const videos = [
     {
         src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755418246/Part_Of_Gas_Refining_Plant_4K_Stock_Video_-_Download_Video_Clip_Now_-_Gasoline_Pipe_-_Tube_Natural_Gas_-_iStock_lxsdyj.mp4",
@@ -21,7 +29,6 @@ const videos = [
     },
 ];
 
-
 export default function Hero() {
     const [current, setCurrent] = useState(0);
 
@@ -33,7 +40,9 @@ export default function Hero() {
     }, []);
 
     return (
-        <div className="relative w-full h-screen overflow-hidden font-inter">
+        <div
+            className={`relative w-full h-screen overflow-hidden ${poppins.className}`}
+        >
             {/* Background Video */}
             <AnimatePresence>
                 {videos.map(
@@ -62,39 +71,57 @@ export default function Hero() {
             {/* Text Content */}
             <div className="relative z-20 flex flex-col justify-center h-full px-6 md:px-20 lg:px-32">
                 <AnimatePresence mode="wait">
-                    <motion.div
-                        key={current}
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 50 }}
-                        transition={{ duration: 1 }}
-                        className="space-y-4 max-w-2xl"
-                    >
-                        <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
+                    <motion.div key={current} className="space-y-6 max-w-2xl">
+                        {/* Title */}
+                        <motion.h2
+                            initial={{ opacity: 0, x: -80 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 80 }}
+                            transition={{ duration: 0.8 }}
+                            className="text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight"
+                        >
                             {videos[current].title}
-                        </h2>
-                        <p className="text-neutral-200 text-base sm:text-lg md:text-xl leading-relaxed">
+                        </motion.h2>
+
+                        {/* Description */}
+                        <motion.p
+                            initial={{ opacity: 0, y: 60 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -60 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="text-neutral-200 text-base sm:text-lg md:text-xl leading-relaxed"
+                        >
                             {videos[current].desc}
-                        </p>
+                        </motion.p>
+
+                        {/* CTA Button (slow smooth move) */}
+                        <motion.a
+                            href="#services"
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-block mt-4 px-6 py-3 rounded bg-green-600 text-white font-medium shadow-md hover:bg-green-700 transition-all duration-300"
+                        >
+                            Discover Our Solutions
+                        </motion.a>
                     </motion.div>
                 </AnimatePresence>
             </div>
 
-            {/* Lottie Button */}
+            {/* WhatsApp Button */}
             <div className="fixed bottom-4 right-4 z-50">
-                <a
-                    href="https://wa.me/2347039978994"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <DotLottieReact
-                        src="https://lottie.host/30acb33c-2e96-47ff-8aea-6bc2ccb6b1d6/5QEeiE8fiG.lottie"
-                        loop
-                        autoplay
-                        className="w-16 h-12 md:w-20 md:h-16 cursor-pointer"
-                    />
-                </a>
-            </div>
+      <a
+        href="https://wa.me/2347039978994"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-[#25D366] hover:bg-[#20b358] transition-all p-3 rounded-full shadow-lg flex items-center justify-center"
+      >
+        <FaWhatsapp className="w-8 h-8 text-white" />
+      </a>
+    </div>
         </div>
     );
 }
