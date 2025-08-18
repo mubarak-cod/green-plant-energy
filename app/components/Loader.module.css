@@ -1,4 +1,17 @@
 /* From Uiverse.io by satyamchaudharydev */ 
+.loader {
+  position: fixed; /* covers whole viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000; /* optional: dark backdrop */
+  z-index: 9999; /* stays above everything */
+}
+
 .loading {
  --speed-of-animation: 0.9s;
  --gap: 6px;
