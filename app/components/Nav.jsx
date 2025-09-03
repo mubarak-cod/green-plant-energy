@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Menu, X, ChevronRight } from "lucide-react";
@@ -17,17 +17,20 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <Image
-              src="https://res.cloudinary.com/dpsxbuxkr/image/upload/v1755419466/greenlogoo_ygvz7n.png"
-              alt="Logo"
-              width={120}
-              height={120}
-              style={{ objectFit: "contain" }}
-              priority
-            />
-          </Link>
+          {/* Logo + RC number */}
+          <div className="flex items-center flex-shrink-0 space-x-3">
+            <Link href="/">
+              <Image
+                src="https://res.cloudinary.com/dpsxbuxkr/image/upload/v1755419466/greenlogoo_ygvz7n.png"
+                alt="Logo"
+                width={120}
+                height={120}
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </Link>
+            <span className="text-xs text-gray-500">Rc : 8731821</span>
+          </div>
 
           {/* Desktop Nav (visible ≥1180px) */}
           <div className="hidden [@media(min-width:1180px)]:flex flex-1 justify-center space-x-10">
@@ -45,9 +48,6 @@ const Navbar = () => {
             </Link>
             <Link href="#news" className="text-black hover:text-green-600 text-sm">
               News
-            </Link>
-            <Link href="#foundation" className="text-black hover:text-green-600 text-sm">
-              NNPC Foundation
             </Link>
           </div>
 
@@ -83,7 +83,7 @@ const Navbar = () => {
           className="[@media(min-width:1180px)]:hidden bg-white shadow-md"
         >
           <div className="px-4 py-6 space-y-4 flex flex-col text-left">
-            <Link href="#who" className="text-black hover:text-green-600">
+            <Link href="/who-we-are" className="text-black hover:text-green-600">
               Who we are
             </Link>
             <Link href="#partnerships" className="text-black hover:text-green-600">
@@ -98,13 +98,10 @@ const Navbar = () => {
             <Link href="#news" className="text-black hover:text-green-600">
               News
             </Link>
-            <Link href="#foundation" className="text-black hover:text-green-600">
-              NNPC Foundation
-            </Link>
 
             {/* Contact Button in Mobile */}
             <Link
-              href="#contact"
+              href="/contact"
               className="flex items-center justify-center bg-green-900 text-white px-5 py-2 text-sm font-semibold hover:bg-green-800 transition"
             >
               CONTACT US <ChevronRight className="ml-2" size={18} />
