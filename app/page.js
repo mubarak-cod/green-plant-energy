@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import ChatWidget from "./components/ChatWidget";
 import Image from "next/image";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
@@ -14,9 +15,15 @@ export default function Home() {
   return (
       <div className="relative w-full overflow-x-hidden">
         <Nav />
-        <Suspense fallback={<Loader />}>
+        {/* <Suspense fallback={<Loader />}> */}
        <Hero />
-       </Suspense>
+         <ChatWidget
+        phone="+2348012345678"               // your WhatsApp number
+        welcome="Hi! I’m your AI assistant 🤖 — how can I help today?"
+        ctaText="Chat on WhatsApp"
+        presetText="Hello! I’d like to speak with support."
+      />
+       {/* </Suspense> */}
         <Welcome />
         <WhatWeDo />
         <WorldMapDemo />
@@ -66,3 +73,4 @@ export default function Home() {
 //     </div>
 //   );
 // }
+

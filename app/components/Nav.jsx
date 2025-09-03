@@ -54,7 +54,7 @@ const Navbar = () => {
           {/* Contact Button (visible ≥1180px) */}
           <div className="hidden [@media(min-width:1180px)]:flex items-center">
             <Link
-              href="#contact"
+              href="/contact"
               className="flex items-center bg-green-900 text-white px-5 py-2 rounded-none text-sm font-semibold hover:bg-green-800 transition"
             >
               CONTACT US

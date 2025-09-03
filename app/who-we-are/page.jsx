@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Navbar from "../components/Nav";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -142,7 +143,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <Image
-            src="/gas.jpg"
+            src="/images/gas.png"
             alt="Gas infrastructure"
             width={500}
             height={300}
@@ -159,6 +160,7 @@ export default function Home() {
         </div>
       </section>
     </main>
+    <Footer />
     </div>
   );
 }
