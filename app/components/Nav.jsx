@@ -31,7 +31,7 @@ const Navbar = () => {
 
           {/* Desktop Nav (visible ≥1180px) */}
           <div className="hidden [@media(min-width:1180px)]:flex flex-1 justify-center space-x-10">
-            <Link href="#who" className="text-black hover:text-green-600 text-sm">
+            <Link href="/who-we-are" className="text-black hover:text-green-600 text-sm">
               Who we are
             </Link>
             <Link href="#partnerships" className="text-black hover:text-green-600 text-sm">
