@@ -15,7 +15,7 @@ export default function Home() {
   return (
       <div className="relative w-full overflow-x-hidden">
         <Nav />
-        {/* <Suspense fallback={<Loader />}> */}
+        <Suspense fallback={<Loader />}>
        <Hero />
          <ChatWidget
         phone="+2348012345678"               // your WhatsApp number
@@ -23,7 +23,7 @@ export default function Home() {
         ctaText="Chat on WhatsApp"
         presetText="Hello! I’d like to speak with support."
       />
-       {/* </Suspense> */}
+       </Suspense>
         <Welcome />
         <WhatWeDo />
         <WorldMapDemo />
