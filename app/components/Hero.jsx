@@ -1,140 +1,121 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp } from "react-icons/fa";
-import { Poppins } from "next/font/google";
-import { Suspense } from "react";
-import Loader from "./Loader";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
-// Load Poppins font
-const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
-});
-
-const videos = [
+const slides = [
     {
-        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755536457/Part_Of_Gas_Refining_Plant_4K_Stock_Video_-_Download_Video_Clip_Now_-_Gasoline_Pipe_-_Tube_Natural_Gas_-_iStock_vnlgfb.mp4",
-        title: "Empowering Oil & Gas with Innovation",
-        desc: "We deliver cutting-edge digital solutions that optimize operations, enhance efficiency, and drive sustainability across the oil and gas industry. Our expertise ensures smarter processes, safer workflows, and measurable impact for global energy providers.",
+        id: 1,
+        image: "/images/africa.png",
+        heading: "Africa’s largest energy company",
+        text: "We are committed to making energy available and accessible to all.",
     },
     {
-        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755536636/Two_workers_at_the_factory_-_Free_Stock_Video_Footage_og1tqe.mp4",
-        title: "Sustainable Energy for the Future",
-        desc: "Our mission focuses on renewable strategies and sustainable energy solutions that empower businesses to reduce carbon footprints, increase resilience, and lead the transition towards cleaner, greener, and more responsible power generation practices worldwide.",
+        id: 2,
+        image: "/images/driving.png",
+        heading: "Driving sustainable energy",
+        text: "Innovation and sustainability at the core of everything we do.",
     },
     {
-        src: "https://res.cloudinary.com/dpsxbuxkr/video/upload/v1755536760/Worker_with_hardhat_at_the_factory_-_Free_Stock_Video_Footage_2_j99d35.mp4",
-        title: "Engineering Excellence at Every Step",
-        desc: "Providing world-class engineering services across the energy value chain, we combine innovation, precision, and expertise to deliver projects that exceed expectations, ensuring operational excellence, cost efficiency, and long-term reliability for our clients globally.",
+        id: 3,
+        image: "/images/global.png",
+        heading: "Global partnerships",
+        text: "Working with international partners to power progress.",
+    },
+    {
+        id: 4,
+        image: "/images/innovation.png",
+        heading: "Innovation in energy",
+        text: "Leveraging technology to provide clean and reliable energy.",
+    },
+    {
+        id: 5,
+        image: "/images/sustain.png",
+        heading: "Energy efficiency and sustainability",
+        text: "We are committed to reducing carbon emissions while delivering reliable power to millions.",
     },
 ];
 
-export default function Hero() {
+export default function HeroSlider() {
     const [current, setCurrent] = useState(0);
+    const [direction, setDirection] = useState(0);
 
+    // Auto slide every 12s
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % videos.length);
-        }, 7000);
+            handleNext();
+        }, 12000);
         return () => clearInterval(interval);
-    }, []);
+    }, [current]);
+
+    const handleNext = () => {
+        setDirection(1);
+        setCurrent((prev) => (prev + 1) % slides.length);
+    };
+
+    const handlePrev = () => {
+        setDirection(-1);
+        setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    };
 
     return (
-        <div
-            className={`relative w-full h-screen overflow-hidden ${poppins.className}`}
-        >
-            {/* Background Video */}
-            {/* <Suspense fallback={<Loader />}> */}
-            <AnimatePresence>
-                {videos.map(
-                    (video, index) =>
-                        index === current && (
-                            <motion.video
-                                key={index}
-                                src={video.src}
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                className="absolute w-full h-full object-cover"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 1.2 }}
-                            />
-                        )
-                )}
-            </AnimatePresence>
-            {/* </Suspense> */}
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/80 z-10"></div>
-
-            {/* Text Content */}
-            <div className="relative z-20 flex flex-col justify-center h-full px-6 md:px-20 lg:px-32">
-                <AnimatePresence mode="wait">
-                    <motion.div key={current} className="space-y-6 max-w-2xl">
-                        {/* Title */}
-                        <motion.h2
-                            initial={{ opacity: 0, x: -80 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 80 }}
-                            transition={{ duration: 0.8 }}
-                            className="text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight"
-                        >
-                            {videos[current].title}
-                        </motion.h2>
-
-                        {/* Description */}
-                        <motion.p
-                            initial={{ opacity: 0, y: 60 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -60 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-neutral-200 text-base sm:text-lg md:text-xl leading-relaxed"
-                        >
-                            {videos[current].desc}
-                        </motion.p>
-
-                        {/* CTA Button (slow smooth move) */}
-                        <motion.a
-                            href="#services"
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -40 }}
-                            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="inline-block mt-4 px-6 py-3 rounded bg-green-600 text-white font-medium shadow-md hover:bg-green-700 transition-all duration-300"
-                        >
-                            Discover Our Solutions
-                        </motion.a>
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-
-            {/* WhatsApp Button */}
-            <div className="fixed bottom-4 right-4 z-50">
-                <motion.a
-                    href="https://wa.me/2347039978994"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-[#25D366] hover:bg-[#20b358] transition-all p-3 rounded-full shadow-lg flex items-center justify-center"
-                    animate={{
-                        scale: [1, 1.15, 1], // slight pop
-                        rotate: [0, -8, 8, 0] // subtle wiggle
-                    }}
-                    transition={{
-                        duration: 1.8,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
+        <div className="relative w-full h-[90vh] pb-3 overflow-hidden bg-black">
+            {/* bg-black prevents white flash */}
+            <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                    key={slides[current].id}
+                    custom={direction}
+                    initial={{ x: direction > 0 ? "100%" : "-100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: direction > 0 ? "-100%" : "100%" }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${slides[current].image})` }}
                 >
-                    <FaWhatsapp className="w-8 h-8 text-white" />
-                </motion.a>
-            </div>
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black/50"></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 h-full flex flex-col justify-center px-[100px] lg:px-[105px] max-w-full">
+                        <h1 className="text-4xl md:text-6xl font-bold text-white max-w-xl leading-tight">
+                            {slides[current].heading}
+                        </h1>
+                        <p className="mt-4 text-lg text-gray-200 max-w-md">
+                            {slides[current].text}
+                        </p>
+
+                        {/* Moderate Who we are button */}
+                        <div
+                            onClick={() => window.location.href = "/who-we-are"}
+                            className="mt-6 flex items-center justify-center bg-white text-black font-bold rounded-lg 
+             px-8 py-4 text-lg sm:px-10 sm:py-5 sm:text-xl md:px-12 md:py-6 md:text-2xl 
+             w-fit hover:bg-gray-100 cursor-pointer transition-shadow shadow-md hover:shadow-lg"
+                        >
+                            Who We Are
+                            <ChevronRight className="ml-3" size={20} />
+                        </div>
+
+
+
+                        {/* Prev / Next buttons */}
+                        <div className="mt-12 flex gap-4">
+                            <button
+                                onClick={handlePrev}
+                                className="w-11 h-11 rounded-full bg-yellow-400 flex items-center justify-center hover:bg-yellow-500 transition"
+                            >
+                                <ChevronLeft className="text-black" />
+                            </button>
+                            <button
+                                onClick={handleNext}
+                                className="w-11 h-11 rounded-full bg-yellow-400 flex items-center justify-center hover:bg-yellow-500 transition"
+                            >
+                                <ChevronRight className="text-black" />
+                            </button>
+                        </div>
+                    </div>
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 }

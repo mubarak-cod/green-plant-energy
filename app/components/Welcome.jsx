@@ -26,9 +26,9 @@ const Welcome = () => {
                         Gas Sector.
                         <br />
                         <br />
-                        Founded in 2004 with Headquarters in Lagos, one of Africa’s largest
+                        {/* Founded in 2004 with Headquarters in Lagos, one of Africa’s largest
                         business hubs, our performance within the sector has resulted in
-                        significant growth in market share and customer base.
+                        significant growth in market share and customer base. */}
                     </p>
 
                     <button className="mt-6 px-6 py-3 rounded-lg bg-green-600 text-white font-semibold shadow-md hover:bg-yellow-700 transition">
@@ -48,14 +48,14 @@ const Welcome = () => {
                             className="w-full h-full"
                         />
                     </div>
-                    <div className="w-1/2 h-72">
+                    {/* <div className="w-1/2 h-72">
                         <DotLottieReact
                             src="https://lottie.host/2cf757fd-03aa-49d1-bd52-981a621e7b9b/i1UiBOI9gY.lottie"
                             loop
                             autoplay
                             className="w-full h-full"
                         />
-                    </div>
+                    </div> */}
                 </div>
                 </Suspense>
             </div>
