@@ -4,11 +4,14 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Menu, X, ChevronRight } from "lucide-react";
 import Image from "next/image";
-
-const Navbar = () => {
+import Navbar from "../components/Nav";
+import Footer from "../components/Footer";
+const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <div>
+      <Navbar />
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
@@ -40,10 +43,10 @@ const Navbar = () => {
             <Link href="#partnerships" className="text-black hover:text-green-600 text-sm">
               Partnership Opportunities
             </Link>
-            <Link href="#sustainability" className="text-black hover:text-green-600 text-sm">
+            <Link href="/sustainability" className="text-black hover:text-green-600 text-sm">
               Sustainability
             </Link>
-            <Link href="#businesses" className="text-black hover:text-green-600 text-sm">
+            <Link href="/businesses" className="text-black hover:text-green-600 text-sm">
               Our Businesses
             </Link>
             <Link href="#news" className="text-black hover:text-green-600 text-sm">
@@ -89,10 +92,10 @@ const Navbar = () => {
             <Link href="#partnerships" className="text-black hover:text-green-600">
               Partnership Opportunities
             </Link>
-            <Link href="#sustainability" className="text-black hover:text-green-600">
+            <Link href="/sustainability" className="text-black hover:text-green-600">
               Sustainability
             </Link>
-            <Link href="#businesses" className="text-black hover:text-green-600">
+            <Link href="/businesses" className="text-black hover:text-green-600">
               Our Businesses
             </Link>
             <Link href="#news" className="text-black hover:text-green-600">
@@ -110,7 +113,10 @@ const Navbar = () => {
         </motion.div>
       )}
     </motion.nav>
+
+    <Footer />
+    </div>
   );
 };
 
-export default Navbar;
+export default Page;
