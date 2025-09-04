@@ -49,9 +49,9 @@ const Page = () => {
             <Link href="/businesses" className="text-black hover:text-green-600 text-sm">
               Our Businesses
             </Link>
-            <Link href="#news" className="text-black hover:text-green-600 text-sm">
+            {/* <Link href="#news" className="text-black hover:text-green-600 text-sm">
               News
-            </Link>
+            </Link> */}
           </div>
 
           {/* Contact Button (visible ≥1180px) */}
